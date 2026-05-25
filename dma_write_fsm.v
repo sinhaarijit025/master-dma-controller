@@ -1,7 +1,7 @@
 module dma_write_fsm(
     clk,rst,trigger,dest_add,length,write_done,
     AWADDR,AWVALID,AWREADY,WDATA,WVALID,WREADY,
-    BVALID,BREADY, // Added missing ports
+    BVALID,BREADY, 
     fifo_dout,fifo_re,fifo_empty
 );
     input clk,rst,trigger;
@@ -17,8 +17,8 @@ module dma_write_fsm(
     output reg WVALID;
     input WREADY;
     
-    input BVALID;       // Added missing declaration
-    output reg BREADY;  // Added missing declaration
+    input BVALID;       
+    output reg BREADY;  
     
     input [31:0] fifo_dout;
     output reg fifo_re;
@@ -38,7 +38,7 @@ module dma_write_fsm(
     always @(posedge clk) begin
         if(rst) begin
             state<=IDLE;
-            write_done<=1'b0; // FIXED: Changed = to <=
+            write_done<=1'b0;
             AWADDR<=32'b0;
             AWVALID<=1'b0;
             WDATA<=32'b0;
