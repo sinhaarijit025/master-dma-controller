@@ -8,7 +8,7 @@ module dma_read_fsm (clk,rst,trigger,src_add,length,read_done,ARADDR,ARVALID,ARR
     input ARREADY;
     input [31:0] RDATA;
     input RVALID;
-    output wire RREADY; // Changed to wire since it's driven by assign
+    output wire RREADY; 
     output reg [31:0] fifo_din;
     output reg fifo_we;
     input fifo_full;
@@ -48,7 +48,7 @@ module dma_read_fsm (clk,rst,trigger,src_add,length,read_done,ARADDR,ARVALID,ARR
             bytes_from_bus=bytes_remaining;
         end
         else begin
-            bytes_from_bus=valid_bytes_in_word; // FIXED: Added Semicolon here
+            bytes_from_bus=valid_bytes_in_word;
         end
         
         //shift the incoming rdata
