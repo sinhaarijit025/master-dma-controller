@@ -2,9 +2,6 @@
 
 module tb_master_dma_ex2;
 
-    // =========================================================================
-    // Signals
-    // =========================================================================
     reg clk;
     reg reset;
     
@@ -33,9 +30,6 @@ module tb_master_dma_ex2;
     reg         BVALID;
     wire        BREADY;
 
-    // =========================================================================
-    // Device Under Test (DUT) Instantiation
-    // =========================================================================
     dma dut (
         .clk(clk), 
         .rst(reset),
@@ -51,9 +45,6 @@ module tb_master_dma_ex2;
         .BVALID(BVALID), .BREADY(BREADY)
     );
 
-    // =========================================================================
-    // Clock & Waveform Generation
-    // =========================================================================
     initial begin
         clk = 0;
         forever #5 clk = ~clk;
@@ -64,9 +55,6 @@ module tb_master_dma_ex2;
         $dumpvars(0, tb_master_dma_ex2);
     end
 
-    // =========================================================================
-    // Mock AXI-Lite Slave: Read Channel (Provides Source Data)
-    // =========================================================================
     always @(posedge clk) begin
         if (reset) begin
             ARREADY <= 1'b1; 
@@ -92,9 +80,6 @@ module tb_master_dma_ex2;
         end
     end
 
-    // =========================================================================
-    // Mock AXI-Lite Slave: Write Channel (Receives Destination Data)
-    // =========================================================================
     reg aw_accepted, w_accepted;
 
     always @(posedge clk) begin
@@ -131,9 +116,6 @@ module tb_master_dma_ex2;
         end
     end
 
-    // =========================================================================
-    // Main Test Sequence (Example 2)
-    // =========================================================================
     initial begin
         reset = 1;
         trigger = 0;
