@@ -126,10 +126,8 @@ module tb_master_dma_ex2;
         #20 reset = 0;
         #20;
 
-        $display("\n==================================================");
         $display("STARTING DMA TRANSFER: EXAMPLE 2");
         $display("Source: 0x1011 (Offset 1) | Dest: 0x3000 | Len: 9 Bytes");
-        $display("==================================================\n");
         
         // Example 2 parameters
         source_address      = 32'h1011; 
@@ -141,9 +139,7 @@ module tb_master_dma_ex2;
 
         wait(done);
         
-        $display("\n==================================================");
         $display("DMA TRANSFER COMPLETE (DONE SIGNAL ASSERTED)");
-        $display("==================================================\n");
         
         #50 $finish;
     end
